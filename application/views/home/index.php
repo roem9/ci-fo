@@ -12,6 +12,31 @@
             <h1 class="h3 mb-0 text-gray-800 mt-3"><?= $header?></h1>
         </div>
 
+        <form action="<?=base_url()?>rekap/<?=$url?>" method="post">
+            <div class="form-row mb-3">
+                <div class="col-2">
+                    <select name="bulan" id="bulan" class="form-control form-control-sm">
+                        <option value="">Bulan</option>
+                        <?php foreach ($bulan as $bulan) :?>
+                            <option value="<?=$bulan['id']?>" <?php if($bulan['id'] == $month)echo "selected"?>><?=$bulan['bulan']?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+                
+                <div class="col-2">
+                    <select name="tahun" id="tahun" class="form-control form-control-sm">
+                        <option value="">Tahun</option>
+                        <option value="2019" <?php if($year == '2019')echo "selected"?>>2019</option>
+                        <option value="2020" <?php if($year == '2020')echo "selected"?>>2020</option>
+                    </select>
+                </div>
+
+                <div class="col-1">
+                    <input type="submit" value="Go" class="btn btn-sm btn-success">
+                </div>
+            </div>
+        </form>
+
         <div class="row fo-13">
             <div class="col-3">
                 <ul class="list-group">
