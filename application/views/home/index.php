@@ -12,7 +12,7 @@
             <h1 class="h3 mb-0 text-gray-800 mt-3"><?= $header?></h1>
         </div>
 
-        <form action="<?=base_url()?>rekap/<?=$url?>" method="post">
+        <form action="<?=base_url()?>" method="post">
             <div class="form-row mb-3">
                 <div class="col-2">
                     <select name="bulan" id="bulan" class="form-control form-control-sm">
@@ -38,78 +38,90 @@
         </form>
 
         <div class="row fo-13">
-            <div class="col-3">
+            <!-- jk -->
+            <div class="md-col-2 sm-col-4 col-2">
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-info">
-                        <div class="row">
-                            <div class="col-6">Gender</div>
-                            <div class="col-6"><i class="fa fa-male"></i> <i class="fa fa-female"></i> </div>
-                        </div>
+                    <li class="list-group-item list-group-item-info d-flex justify-content-between">
+                        <span>Gender</span>
+                        <span><i class="fa fa-male"></i> <i class="fa fa-female"></i></span>
                     </li>
-                    <li class="list-group-item"><i class="fa fa-male"></i> Ikhwan</li>
-                    <li class="list-group-item"><i class="fa fa-female"></i> Akhwat</li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span><i class="fa fa-male"></i> Ikhwan</span>
+                        <?= $peserta['pria']?>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span><i class="fa fa-female"></i> Akhwat</span>
+                        <?= $peserta['wanita']?>
+                    </li>
                 </ul>
             </div>
             
-            <div class="col-3">
+            <!-- pendidikan -->
+            <div class="md-col-2 sm-col-4 col-2">
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-info">
-                        <div class="row">
-                            <div class="col-6">Pendidikan</div>
-                            <div class="col-6"><i class="fa fa-book"></i></div>
-                        </div>
+                    <li class="list-group-item list-group-item-info d-flex justify-content-between">
+                        <span>Pendidikan</span>
+                        <i class="fa fa-book"></i>
                     </li>
-                    <li class="list-group-item">SD/Sederajat</li>
-                    <li class="list-group-item">SMP/Sederajat</li>
-                    <li class="list-group-item">SMA/Sederajat</li>
-                    <li class="list-group-item">Diploma I/II/III</li>
-                    <li class="list-group-item">S1/S2/S3</li>
+                    <?php foreach ($pendidikan as $pendidikan) :?>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span><?php if($pendidikan['pendidikan'] == ''){echo "Undefined";}else{echo $pendidikan['pendidikan'];}?></span>
+                            <?= $pendidikan['peserta']?>
+                        </li>
+                    <?php endforeach;?>
                 </ul>
             </div>
             
-            <div class="col-3">
+            <!-- pekerjaan -->
+            <div class="md-col-2 sm-col-4 col-2">
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-info">
-                        <div class="row">
-                            <div class="col-6">Pekerjaan</div>
-                            <div class="col-6"><i class="fa fa-book"></i></div>
-                        </div>
+                    <li class="list-group-item list-group-item-info d-flex justify-content-between">
+                        <span>Pekerjaan</span>
+                        <i class="fa fa-user-tie"></i>
                     </li>
-                    <li class="list-group-item">Pelajar</li>
-                    <li class="list-group-item">Mahasiswa</li>
-                    <li class="list-group-item">Swasta</li>
-                    <li class="list-group-item">PNS/BUMN</li>
-                    <li class="list-group-item">TNI/POLRI</li>
-                    <li class="list-group-item">Lainnya</li>
+                    <?php foreach ($pekerjaan as $pekerjaan) :?>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span><?php if($pekerjaan['pekerjaan'] == ''){echo "Undefined";}else{echo $pekerjaan['pekerjaan'];}?></span>
+                            <?= $pekerjaan['peserta']?>
+                        </li>
+                    <?php endforeach;?>
                 </ul>
             </div>
 
-            <div class="col-3"> 
+            <!-- pendaftar -->
+            <div class="md-col-2 sm-col-4 col-2"> 
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-info">
-                        <div class="row">
-                            <div class="col-6">Pendaftar</div>
-                            <div class="col-6"><i class="fa fa-book"></i></div>
-                        </div>
+                    <li class="list-group-item list-group-item-info d-flex justify-content-between">
+                        <span>Pendaftar</span>
+                        <i class="fa fa-user"></i>
                     </li>
-                    <li class="list-group-item">Kelompok</li>
-                    <li class="list-group-item">Peserta</li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Peserta</span>
+                        <?= $peserta['total']?>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Kelompok</span>
+                        <?= $kelas?>
+                    </li>
                 </ul>
             </div>
             
-            <div class="col-3">
+            <!-- program -->
+            <div class="md-col-2 sm-col-4 col-2">
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-info">
-                        <div class="row">
-                            <div class="col-6">Program</div>
-                            <div class="col-6"><i class="fa fa-book"></i></div>
-                        </div>
+                    <li class="list-group-item list-group-item-info d-flex justify-content-between">
+                        <span>Program</span>
+                        <i class="fa fa-book"></i>
                     </li>
-                    <!-- <?php foreach ($program as $program):?>
-                        <li class="list-group-item"><?=$program['program']?> <?= $program['peserta']?></li>
-                    <?php endforeach;?> -->
+                    <?php foreach ($program as $program) :?>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span><?= $program['program']?></span>
+                            <?= $program['peserta']?>
+                        </li>
+                    <?php endforeach;?>
                 </ul>
             </div>
+
 
         </div>
     </div>
