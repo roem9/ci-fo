@@ -70,7 +70,6 @@ class Kelas_model extends CI_MODEL{
         $this->db->where("a.id_kelas", $id_kelas);
         return $this->db->get()->row_array();
     }
-
     
     public function editWl($id_kelas){
         $data['wl'] = [

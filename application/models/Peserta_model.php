@@ -53,8 +53,6 @@ class Peserta_model extends CI_Model{
             "pendidikan" => $this->input->post('pendidikan', true),
             "status_nikah" => $this->input->post('status_nikah', true),
             "no_hp" => $this->input->post('no_hp', true),
-            "info" => $this->input->post('info', true),
-            // "status" => 'wl',
             "umur" => $this->input->post('umur', true),
             "program" => $this->input->post('program', true),
             "hari" => $this->input->post('hari', true),

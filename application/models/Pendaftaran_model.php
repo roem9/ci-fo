@@ -1,6 +1,12 @@
 <?php
 class Pendaftaran_model extends CI_MODEL{
-    
+    public function getAllPengajar(){
+        $this->db->select('a.nip, nama_kpq');
+        $this->db->from('kpq as a');
+        $this->db->order_by('nama_kpq', 'asc');
+        return $this->db->get()->result_array();
+    }
+
     public function getAllIdKelas(){
         $this->db->select("id_kelas, program");
         $this->db->from("kelas");
@@ -70,6 +76,17 @@ class Pendaftaran_model extends CI_MODEL{
             $id_peserta = $tipe.$bulan.$tahun.'.'.$no_urut;
         }
 
+        $info = $this->input->post("info", true);
+        $pekerjaan = $this->input->post("pekerjaan", true);
+        
+        if($info == 'Lainnya') {
+            $info = $this->input->post("civitas", true);
+        }
+        
+        if($pekerjaan == 'Lainnya') {
+            $pekerjaan = $this->input->post("pekerjaan_lainnya", true);
+        }
+
         $data['peserta'] = [
             "id_peserta" => $id_peserta,
             "nama_peserta" => $this->input->post('nama_peserta', true),
@@ -80,7 +97,7 @@ class Pendaftaran_model extends CI_MODEL{
             "pendidikan" => $this->input->post('pendidikan', true),
             "status_nikah" => $this->input->post('status_nikah', true),
             "no_hp" => $this->input->post('no_hp', true),
-            "info" => $this->input->post('info', true),
+            "info" => $info,
             "status" => $status,
             "umur" => $this->input->post('umur', true),
             "program" => $this->input->post('program', true),
@@ -119,7 +136,7 @@ class Pendaftaran_model extends CI_MODEL{
         $this->db->insert('ortu', $data['ortu']);
 
         $data['pekerjaan'] = [
-            "pekerjaan" => $this->input->post('pekerjaan', true),
+            "pekerjaan" => $pekerjaan,
             "nama_perusahaan" => $this->input->post('nama_perusahaan', true),
             "no_telp_perusahaan" => $this->input->post('no_telp_perusahaan', true),
             "alamat_perusahaan" => $this->input->post('alamat_perusahaan', true),

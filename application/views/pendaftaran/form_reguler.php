@@ -130,6 +130,15 @@
                                             <option value="Lainnya">Lainnya</option>
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="civitas">Nama Civitas <span class="text-danger">*</span></label>
+                                        <select name="civitas" id="civitas" class="form-control form-control-sm" disabled>
+                                            <option value="">Pilih Civitas</option>
+                                            <?php foreach ($pengajar as $pengajar) :?>
+                                                <option value="<?= $pengajar['nip']?>"><?= $pengajar['nama_kpq']?></option>
+                                            <?php endforeach;?>
+                                        </select>
+                                    </div>
                                     <div class="d-flex justify-content-end">
                                         <a href="#" class="btn btn-success btn-sm" id="nextDiri"><i class="fa fa-arrow-right"></i> Data Diri</a>
                                     </div>
@@ -259,6 +268,10 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                        <label for="pekerjaan_lainnya">Pekerjaan <span class="text-danger">*</span></label>
+                                        <input type="text" name="pekerjaan_lainnya" id="pekerjaan_lainnya" class="form-control form-control-sm" disabled>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="nama_perusahaan">Nama Instansi</label>
                                         <input type="text" name="nama_perusahaan" id="nama_perusahaan" class="form-control form-control-sm" autocomplete="off" autocorrect="off">
                                     </div>
@@ -328,6 +341,26 @@
     $("#dataPekerjaan").hide();
     $("#dataOrtu").hide();
 
+    $("#info").change(function(){
+        var info = $("#info").val();
+        
+        if(info == "Lainnya"){
+            $("#civitas").attr("disabled", false);
+        } else {
+            $("#civitas").attr("disabled", true);
+        }
+    })
+    
+    $("#pekerjaan").change(function(){
+        var pekerjaan = $("#pekerjaan").val();
+        
+        if(pekerjaan == "Lainnya"){
+            $("#pekerjaan_lainnya").attr("disabled", false);
+        } else {
+            $("#pekerjaan_lainnya").attr("disabled", true);
+        }
+    })
+
     //data akademik
     $("#nextDiri").click(function(){
         if($("#tipe_peserta").val() == '' || $("#program").val() == '' || $("#hari").val() == '' || $("#jam").val() == '' || $("#tempat").val() == '' || $("#info").val() == ''){
@@ -336,13 +369,22 @@
                 text: 'Harap mengisi yang bertanda *'
             })
         } else {
-            $("#progress").css("width", "25%");
-            $("#progress").html("25%");
-            $("#dataAkademik").hide();
-            $("#dataDiri").show();
-            $("#dataAlamat").hide();
-            $("#dataPekerjaan").hide();
-            $("#dataOrtu").hide();
+            var info = $("#info").val();
+
+            if(info == "Lainnya" && $("#civitas").val() == ''){
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Harap mengisi yang bertanda *'
+                })
+            } else {
+                $("#progress").css("width", "25%");
+                $("#progress").html("25%");
+                $("#dataAkademik").hide();
+                $("#dataDiri").show();
+                $("#dataAlamat").hide();
+                $("#dataPekerjaan").hide();
+                $("#dataOrtu").hide();
+            }
         }
     })
 
@@ -421,13 +463,22 @@
                 text: 'Harap mengisi yang bertanda *'
             })
         } else {
-            $("#progress").css("width", "100%");
-            $("#progress").html("100%");
-            $("#dataAkademik").hide();
-            $("#dataDiri").hide();
-            $("#dataAlamat").hide();
-            $("#dataPekerjaan").hide();
-            $("#dataOrtu").show();
+            var pekerjaan = $("#pekerjaan").val();
+
+            if(pekerjaan == "Lainnya" && $("#pekerjaan_lainnya").val() == ''){
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Harap mengisi yang bertanda *'
+                })
+            } else {
+                $("#progress").css("width", "100%");
+                $("#progress").html("100%");
+                $("#dataAkademik").hide();
+                $("#dataDiri").hide();
+                $("#dataAlamat").hide();
+                $("#dataPekerjaan").hide();
+                $("#dataOrtu").show();
+            }
         }
     })
 

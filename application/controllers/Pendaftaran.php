@@ -16,7 +16,8 @@ class Pendaftaran extends CI_CONTROLLER{
         $data['tabs'] = 'reguler';
         $data['tipe'] = 'reguler';
         $data['program'] = $this->Pendaftaran_model->getAllProgram();
-    
+        $data['pengajar'] = $this->Pendaftaran_model->getAllPengajar();
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('pendaftaran/form_reguler', $data);
@@ -30,6 +31,7 @@ class Pendaftaran extends CI_CONTROLLER{
         $data['tipe'] = 'pv khusus';
         $data['ket'] = 'pv khusus';
         $data['program'] = $this->Pendaftaran_model->getAllProgram();
+        $data['pengajar'] = $this->Pendaftaran_model->getAllPengajar();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
@@ -44,6 +46,7 @@ class Pendaftaran extends CI_CONTROLLER{
         $data['tipe'] = 'pv luar';
         $data['ket'] = 'pv luar';
         $data['program'] = $this->Pendaftaran_model->getAllProgram();
+        $data['pengajar'] = $this->Pendaftaran_model->getAllPengajar();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
@@ -58,6 +61,7 @@ class Pendaftaran extends CI_CONTROLLER{
         $data['tipe'] = 'pv luar';
         $data['ket'] = 'pv instansi';
         $data['program'] = $this->Pendaftaran_model->getAllProgram();
+        $data['pengajar'] = $this->Pendaftaran_model->getAllPengajar();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
@@ -72,6 +76,7 @@ class Pendaftaran extends CI_CONTROLLER{
         $data['tipe'] = 'pv luar';
         $data['ket'] = 'event';
         $data['program'] = $this->Pendaftaran_model->getAllProgram();
+        $data['pengajar'] = $this->Pendaftaran_model->getAllPengajar();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
@@ -89,6 +94,7 @@ class Pendaftaran extends CI_CONTROLLER{
         $data['title'] = 'Tambah Peserta Baru';
         $data['header'] = 'Tambah Peserta Baru';
         $data['program'] = $this->Pendaftaran_model->getAllProgram();
+        $data['pengajar'] = $this->Pendaftaran_model->getAllPengajar();
     
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
@@ -162,6 +168,7 @@ class Pendaftaran extends CI_CONTROLLER{
                 $this->Pendaftaran_model->changeProgram($peserta['id_peserta'], $kelas['program']);
             }
         }
-        // var_dump($peserta);
     }
+
+
 }

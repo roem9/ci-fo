@@ -161,20 +161,6 @@
                             <label for="tempat">Tempat Belajar</label>
                             <textarea name="tempat" id="tempat" class="form-control form-control-sm"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="info">Informasi</label>
-                            <select name="info" id="info" class="form-control form-control-sm">
-                                <option value="">Pilih Informasi</option>
-                                <option value="Teman">Teman</option>
-                                <option value="Spanduk">Spanduk</option>
-                                <option value="Media Elektronik">Media Elektronik</option>
-                                <option value="Civitas Tar-Q">Civitas Tar-Q</option>
-                                <option value="Brosur">Brosur</option>
-                                <option value="Peserta">Peserta</option>
-                                <option value="Event">Event</option>
-                                <option value="Lainnya">Lainnya</option>
-                            </select>
-                        </div>
                     </div>
                     <div class="form-detail" id="dataAlamat">
                         <div class="form-group">
@@ -213,15 +199,7 @@
                     <div class="form-detail" id="dataJob">
                         <div class="form-group">
                             <label for="pekerjaan">Pekerjaan</label>
-                            <select name="pekerjaan" id="pekerjaan" class="form-control form-control-sm">
-                                <option value="">Pilih Pekerjaan</option>
-                                <option value="Pelajar">Pelajar</option>
-                                <option value="Mahasiswa">Mahasiswa</option>
-                                <option value="Swasta">Swasta</option>
-                                <option value="PNS/BUMN">PNS/BUMN</option>
-                                <option value="TNI/POLRI">TNI/POLRI</option>
-                                <option value="Lainnya">Lainnya</option>
-                            </select>
+                            <input type="text" name="pekerjaan" id="pekerjaan" class="form-control form-control-sm" readonly>
                         </div>
                         <div class="form-group">
                             <label for="nama_instansi">Nama Instansi</label>
