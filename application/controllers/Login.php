@@ -20,7 +20,7 @@ class Login extends CI_CONTROLLER{
 		$where = array(
 			'id_admin' => $username,
             'password' => $password,
-            'level' => 'akademik'
+            'level' => 'fo'
 			);
 		$cek = $this->Login_model->cekLogin("admin",$where)->num_rows();
 		if($cek > 0){

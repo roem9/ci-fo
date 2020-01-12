@@ -153,4 +153,15 @@ class Pendaftaran extends CI_CONTROLLER{
         $this->session->set_flashdata('peserta', 'ditambahkan');
         redirect($_SERVER['HTTP_REFERER']);
     }
+
+    public function backProgram(){
+        $kelas = $this->Pendaftaran_model->getAllIdKelas();
+        foreach ($kelas as $kelas) {
+            $peserta = $this->Pendaftaran_model->pesertaKelas($kelas['id_kelas']);
+            foreach ($peserta as $peserta) {
+                $this->Pendaftaran_model->changeProgram($peserta['id_peserta'], $kelas['program']);
+            }
+        }
+        // var_dump($peserta);
+    }
 }

@@ -1,5 +1,24 @@
 <?php
 class Pendaftaran_model extends CI_MODEL{
+    
+    public function getAllIdKelas(){
+        $this->db->select("id_kelas, program");
+        $this->db->from("kelas");
+        return $this->db->get()->result_array();
+    }
+
+    public function pesertaKelas($id_kelas){
+        $this->db->select("id_peserta");
+        $this->db->from("peserta");
+        $this->db->where("id_kelas", $id_kelas);
+        return $this->db->get()->result_array();
+    }
+
+    public function changeProgram($id_peserta, $program){
+        $this->db->where("id_peserta", $id_peserta);
+        $this->db->update("peserta", ["program" => $program]);
+    }
+
 
     public function getIdPeserta(){
 
