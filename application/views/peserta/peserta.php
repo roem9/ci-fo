@@ -50,7 +50,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table id="dataTable" class="table table-sm fo-13">
+                <table id="dataTable" class="table table-sm fo-14">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -61,16 +61,6 @@
                             <th>Detail</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>No</th>
-                            <th>Status</th>
-                            <th>Nama Peserta</th>
-                            <th>Gender</th>
-                            <th>No Hp</th>
-                            <th>Detail</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         <?php 
                         $i = 0;
@@ -105,13 +95,11 @@
     <?php else : ?>
         $("#peserta").addClass("active");
     <?php endif;?>
-    $("#akademik").addClass("active");
+    
+    $("#btn-form-1").addClass("active");
 
-    $("#dataAkademik").show();
-    $("#dataDiri").hide();
-    $("#dataAlamat").hide();
-    $("#dataJob").hide();
-    $("#dataOrtu").hide();
+    $("#form-1").show();
+    $("#form-2").hide();
     
     $(".detailPeserta").click(function(){
         const id = $(this).data('id');
@@ -129,108 +117,33 @@
                 $("#nama").val(data.nama_peserta);
                 $("#status").val(data.status);
                 $("#no_hp").val(data.no_hp);
-                $("#t4_lahir").val(data.t4_lahir);
-                $("#tgl_lahir").val(data.tgl_lahir);
+                $("#tgl_masuk").val(data.tgl_masuk);
                 $("#jk").val(data.jk);
-                $("#pendidikan").val(data.pendidikan);
-                $("#status_nikah").val(data.status_nikah);
                 $("#program").val(data.program);
                 $("#hari").val(data.hari);
                 $("#jam").val(data.jam);
                 $("#tempat").val(data.tempat);
-                $("#info").val(data.info);
                 $("#alamat_peserta").val(data.alamat);
-                $("#kel").val(data.kel);
-                $("#kd_pos").val(data.kd_pos);
-                $("#kec").val(data.kec);
-                $("#kab_kota").val(data.kab_kota);
-                $("#provinsi").val(data.provinsi);
-                $("#no_telp").val(data.no_telp);
-                $("#email").val(data.email);
-                $("#pekerjaan").val(data.pekerjaan);
-                $("#nama_instansi").val(data.nama_perusahaan);
-                $("#alamat_instansi").val(data.alamat_perusahaan);
-                $("#telp_instansi").val(data.no_telp_perusahaan);
-                $("#nama_ibu").val(data.nama_ibu);
-                $("#t4_lahir_ibu").val(data.t4_lahir_ibu);
-                $("#tgl_lahir_ibu").val(data.tgl_lahir_ibu);
-                $("#nama_ayah").val(data.nama_ayah);
-                $("#t4_lahir_ayah").val(data.t4_lahir_ayah);
-                $("#tgl_lahir_ayah").val(data.tgl_lahir_ayah);
             }
         })
     })
 
-    $("#akademik").click(function(){
+    $("#btn-form-1").click(function(){
 
-        $("#akademik").addClass("active")
-        $("#diri").removeClass("active")
-        $("#alamat").removeClass("active")
-        $("#job").removeClass("active")
-        $("#ortu").removeClass("active")
+        $("#btn-form-1").addClass("active")
+        $("#btn-form-2").removeClass("active")
         
-        $("#dataAkademik").show();
-        $("#dataDiri").hide();
-        $("#dataAlamat").hide();
-        $("#dataJob").hide();
-        $("#dataOrtu").hide();
+        $("#form-1").show();
+        $("#form-2").hide();
     })
 
-    $("#diri").click(function(){
+    $("#btn-form-2").click(function(){
         
-        $("#akademik").removeClass("active")
-        $("#diri").addClass("active")
-        $("#alamat").removeClass("active")
-        $("#job").removeClass("active")
-        $("#ortu").removeClass("active")
+        $("#btn-form-1").removeClass("active")
+        $("#btn-form-2").addClass("active")
         
-        $("#dataAkademik").hide();
-        $("#dataDiri").show();
-        $("#dataAlamat").hide();
-        $("#dataJob").hide();
-        $("#dataOrtu").hide();
-    })
-    
-    $("#alamat").click(function(){
-        $("#akademik").removeClass("active")
-        $("#diri").removeClass("active")
-        $("#alamat").addClass("active")
-        $("#job").removeClass("active")
-        $("#ortu").removeClass("active")
-        
-        $("#dataAkademik").hide();
-        $("#dataDiri").hide();
-        $("#dataAlamat").show();
-        $("#dataJob").hide();
-        $("#dataOrtu").hide();
-    })
-    
-    $("#job").click(function(){
-        $("#akademik").removeClass("active")
-        $("#diri").removeClass("active")
-        $("#alamat").removeClass("active")
-        $("#job").addClass("active")
-        $("#ortu").removeClass("active")
-        
-        $("#dataAkademik").hide();
-        $("#dataDiri").hide();
-        $("#dataAlamat").hide();
-        $("#dataJob").show();
-        $("#dataOrtu").hide();
-    })
-    
-    $("#ortu").click(function(){
-        $("#akademik").removeClass("active")
-        $("#diri").removeClass("active")
-        $("#alamat").removeClass("active")
-        $("#job").removeClass("active")
-        $("#ortu").addClass("active")
-        
-        $("#dataAkademik").hide();
-        $("#dataDiri").hide();
-        $("#dataAlamat").hide();
-        $("#dataJob").hide();
-        $("#dataOrtu").show();
+        $("#form-1").hide();
+        $("#form-2").show();
     })
 
     $("#editPeserta").click(function(){

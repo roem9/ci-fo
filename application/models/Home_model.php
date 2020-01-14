@@ -38,12 +38,28 @@ class Home_model extends CI_MODEL{
     }
 
     public function getPekerjaan($bulan, $tahun){
+        $pekerjaan = array("Pelajar", "Mahasiswa", "Swasta", "PNS/BUMN", "TNI/POLRI");
+
         $this->db->select("pekerjaan");
         $this->db->from("peserta as a");
         $this->db->join("pekerjaan as b", "a.id_peserta = b.id_peserta");
         $this->db->where("MONTH(tgl_masuk)", $bulan);
         $this->db->where("YEAR(tgl_masuk)", $tahun);
+        $this->db->where_in("pekerjaan", $pekerjaan);
         $this->db->group_by("pekerjaan");
+        return $this->db->get()->result_array();
+    }
+
+    public function getPekerjaanLainnya($bulan, $tahun){
+        $pekerjaan = array("Pelajar", "Mahasiswa", "Swasta", "PNS/BUMN", "TNI/POLRI");
+
+        $this->db->select("*");
+        $this->db->from("peserta as a");
+        $this->db->join("pekerjaan as b", "a.id_peserta = b.id_peserta");
+        $this->db->where("MONTH(tgl_masuk)", $bulan);
+        $this->db->where("YEAR(tgl_masuk)", $tahun);
+        $this->db->where_not_in("pekerjaan", $pekerjaan);
+        // $this->db->group_by("pekerjaan");
         return $this->db->get()->result_array();
     }
 
@@ -56,7 +72,72 @@ class Home_model extends CI_MODEL{
         $this->db->where("YEAR(tgl_masuk)", $tahun);
         return $this->db->get()->result_array();
     }
-    
+
+    public function pekerjaanLain(){
+        $bulan = $_POST['bulan'];
+        $tahun = $_POST['tahun'];
+        $pekerjaan = array("Pelajar", "Mahasiswa", "Swasta", "PNS/BUMN", "TNI/POLRI");
+
+        $this->db->select("pekerjaan, count(a.id_peserta) as peserta");
+        // $this->db->select("*");
+        $this->db->from("peserta as a");
+        $this->db->join("pekerjaan as b", "a.id_peserta = b.id_peserta");
+        $this->db->where("MONTH(tgl_masuk)", $bulan);
+        $this->db->where("YEAR(tgl_masuk)", $tahun);
+        $this->db->where_not_in("pekerjaan", $pekerjaan);
+        $this->db->group_by("pekerjaan");
+        return $this->db->get()->result_array();
+    }
+
+    public function getInformasi($bulan, $tahun){
+        $informasi = array("Teman", "Media Elektronik", "Spanduk", "Civitas Tar-Q", "Brosur", "Peserta", "Event");
+
+        $this->db->select("info");
+        $this->db->from("peserta");
+        $this->db->where("MONTH(tgl_masuk)", $bulan);
+        $this->db->where("YEAR(tgl_masuk)", $tahun);
+        $this->db->where_in("info", $informasi);
+        $this->db->group_by("info");
+        return $this->db->get()->result_array();
+    }
+
+    public function getInformasiLainnya($bulan, $tahun){
+        $informasi = array("Teman", "Media Elektronik", "Spanduk", "Civitas Tar-Q", "Brosur", "Peserta", "Event");
+
+        $this->db->select("*");
+        $this->db->from("peserta");
+        $this->db->where("MONTH(tgl_masuk)", $bulan);
+        $this->db->where("YEAR(tgl_masuk)", $tahun);
+        $this->db->where_not_in("info", $informasi);
+        // $this->db->group_by("info");
+        return $this->db->get()->result_array();
+    }
+
+    public function informasi($bulan, $tahun, $informasi){
+        $this->db->select("*");
+        $this->db->from("peserta");
+        $this->db->where("info", $informasi);
+        $this->db->where("MONTH(tgl_masuk)", $bulan);
+        $this->db->where("YEAR(tgl_masuk)", $tahun);
+        return $this->db->get()->result_array();
+    }
+
+    public function informasiLain(){
+        $bulan = $_POST['bulan'];
+        $tahun = $_POST['tahun'];
+        $informasi = array("Teman", "Media Elektronik", "Spanduk", "Civitas Tar-Q", "Brosur", "Peserta", "Event");
+
+        $this->db->select("nama_kpq, count(a.id_peserta) as peserta");
+        // $this->db->select("*");
+        $this->db->from("peserta as a");
+        $this->db->join("kpq as b", "a.info = b.nip");
+        $this->db->where("MONTH(a.tgl_masuk)", $bulan);
+        $this->db->where("YEAR(a.tgl_masuk)", $tahun);
+        // $this->db->where_not_in("info", $informasi);
+        $this->db->group_by("nip");
+        return $this->db->get()->result_array();
+    }
+
     public function jumlahKelas($bulan, $tahun){
         $this->db->select("*");
         $this->db->from("kelas");

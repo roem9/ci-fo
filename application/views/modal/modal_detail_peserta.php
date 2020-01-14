@@ -13,70 +13,16 @@
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
-                            <a href="#" class='nav-link' id="akademik" data-id=""><i class="fas fa-book"></i></a>
+                            <a href="#" class='nav-link' id="btn-form-1" data-id=""><i class="fas fa-book"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class='nav-link' id="diri" data-id=""><i class="fas fa-user"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class='nav-link' id="alamat" data-id=""><i class="fas fa-map-marker-alt"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class='nav-link' id="job" data-id=""><i class="fas fa-briefcase"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class='nav-link' id="ortu" data-id=""><i class="fas fa-heart"></i></a>
+                            <a href="#" class='nav-link' id="btn-form-2" data-id=""><i class="fas fa-user"></i></a>
                         </li>
                     </ul>
                 </div>
                 <div class="card-body">
                     <input type="hidden" name="id_peserta" id="id_peserta">
-                    <div class="form-detail" id="dataDiri">
-                        <div class="form-group">
-                            <label for="nama">Nama Lengkap</label>
-                            <input class='form-control form-control-sm' type="text" name="nama" id="nama">
-                        </div>
-                        <div class="form-group">
-                            <label for="no_hp">No Handphone</label></td>
-                            <input class='form-control form-control-sm' type="text" name="no_hp" id="no_hp">
-                        </div>
-                        <div class="form-group">
-                            <label for="t4_lahir">Tempat Lahir</label>
-                            <input class='form-control form-control-sm' type="text" name="t4_lahir" id="t4_lahir">
-                        </div>
-                        <div class="form-group">
-                            <label for="tgl_lahir">Tanggal Lahir</label>
-                            <input class='form-control form-control-sm' type="date" name="tgl_lahir" id="tgl_lahir">
-                        </div>
-                        <div class="form-group">
-                            <label for="jk">Gender</label>
-                            <select name="jk" id="jk" class='form-control form-control-sm'>
-                                <option value="Pria">Pria</option>
-                                <option value="Wanita">Wanita</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="pendidikan">Pendidikan</label>
-                            <select name="pendidikan" id="pendidikan" class='form-control form-control-sm'>
-                                <option value="">Pilih Pendidikan</option>
-                                <option value="SD/Sederajat">SD/Sederajat</option>
-                                <option value="SMP/Sederajat">SMP/Sederajat</option>
-                                <option value="SMA/Sederajat">SMA/Sederajat</option>
-                                <option value="Diploma I/II/III">Diploma I/II/III</option>
-                                <option value="S1/S2/S3">S1/S2/S3</option>
-                                <option value="Lainnya">Lainnya</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="status_nikah">Status Menikah</label>
-                            <select name="status_nikah" id="status_nikah" class='form-control form-control-sm'>
-                                <option value="">Pilih Status</option>
-                                <option value="Menikah">Menikah</option>
-                                <option value="Belum Menikah">Belum Menikah</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-detail" id="dataAkademik">
+                    <div class="form-detail" id="form-1">
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select name="status" id="status" class="form-control form-control-sm">
@@ -161,83 +107,30 @@
                             <label for="tempat">Tempat Belajar</label>
                             <textarea name="tempat" id="tempat" class="form-control form-control-sm"></textarea>
                         </div>
+                        <div class="form-group">
+                            <label for="tgl_masuk">Tgl Masuk</label>
+                            <input type="date" name="tgl_masuk" id="tgl_masuk" class="form-control form-control-sm" readonly>
+                        </div>
                     </div>
-                    <div class="form-detail" id="dataAlamat">
+                    <div class="form-detail" id="form-2">
+                        <div class="form-group">
+                            <label for="nama">Nama Lengkap</label>
+                            <input class='form-control form-control-sm' type="text" name="nama" id="nama">
+                        </div>
+                        <div class="form-group">
+                            <label for="no_hp">No Handphone</label></td>
+                            <input class='form-control form-control-sm' type="text" name="no_hp" id="no_hp">
+                        </div>
+                        <div class="form-group">
+                            <label for="jk">Gender</label>
+                            <select name="jk" id="jk" class='form-control form-control-sm'>
+                                <option value="Pria">Pria</option>
+                                <option value="Wanita">Wanita</option>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="alamat_peserta">Alamat</label>
                             <textarea class='form-control form-control-sm' name="alamat_peserta" id="alamat_peserta" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="kel">Kelurahan</label>
-                            <input type="text" name="kel" id="kel" class="form-control form-control-sm" autocomplete="off" autocorrect="off">
-                        </div>
-                        <div class="form-group">
-                            <label for="kd_pos">Kode Pos</label>
-                            <input type="text" name="kd_pos" id="kd_pos" class="form-control form-control-sm" autocomplete="off" autocorrect="off">
-                        </div>
-                        <div class="form-group">
-                            <label for="kec">Kecamatan</label>
-                            <input type="text" name="kec" id="kec" class="form-control form-control-sm" autocomplete="off" autocorrect="off">
-                        </div>
-                        <div class="form-group">
-                            <label for="kab_kota">Kabupaten / Kota</label>
-                            <input type="text" name="kab_kota" id="kab_kota" class="form-control form-control-sm" autocomplete="off" autocorrect="off">
-                        </div>
-                        <div class="form-group">
-                            <label for="provinsi">Provinsi</label>
-                            <input type="text" name="provinsi" id="provinsi" class="form-control form-control-sm" autocomplete="off" autocorrect="off">
-                        </div>
-                        <div class="form-group">
-                            <label for="no_telp">No. Telepon</label>
-                            <input type="text" name="no_telp" id="no_telp" class="form-control form-control-sm" autocomplete="off" autocorrect="off">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="text" name="email" id="email" class="form-control form-control-sm" autocomplete="off" autocorrect="off">
-                        </div>
-                    </div>
-                    <div class="form-detail" id="dataJob">
-                        <div class="form-group">
-                            <label for="pekerjaan">Pekerjaan</label>
-                            <input type="text" name="pekerjaan" id="pekerjaan" class="form-control form-control-sm" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="nama_instansi">Nama Instansi</label>
-                            <input type="text" name="nama_instansi" id="nama_instansi" class="form-control form-control-sm">
-                        </div>
-                        <div class="form-group">
-                            <label for="alamat_instansi">Alamat Instansi</label>
-                            <textarea name="alamat_instansi" id="alamat_instansi" rows="3" class="form-control form-control-sm"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="telp_instansi">No. Telepon</label>
-                            <input type="text" name="telp_instansi" id="telp_instansi" class="form-control form-control-sm">
-                        </div>
-                    </div>
-                    <div class="form-detail" id="dataOrtu">
-                        <div class="form-group">
-                            <label for="nama_ibu">Nama Ibu</label>
-                            <input type="text" name="nama_ibu" id="nama_ibu" class="form-control form-control-sm">
-                        </div>
-                        <div class="form-group">
-                            <label for="t4_lahir_ibu">Tempat Lahir</label>
-                            <input type="text" name="t4_lahir_ibu" id="t4_lahir_ibu" class="form-control form-control-sm">
-                        </div>
-                        <div class="form-group">
-                            <label for="tgl_lahir_ibu">Tanggal Lahir</label>
-                            <input type="date" name="tgl_lahir_ibu" id="tgl_lahir_ibu" class="form-control form-control-sm">
-                        </div>
-                        <div class="form-group">
-                            <label for="nama_ayah">Nama Ayah</label>
-                            <input type="text" name="nama_ayah" id="nama_ayah" class="form-control form-control-sm">
-                        </div>
-                        <div class="form-group">
-                            <label for="t4_lahir_ayah">Tempat Lahir</label>
-                            <input type="text" name="t4_lahir_ayah" id="t4_lahir_ayah" class="form-control form-control-sm">
-                        </div>
-                        <div class="form-group">
-                            <label for="tgl_lahir_ayah">Tanggal Lahir</label>
-                            <input type="date" name="tgl_lahir_ayah" id="tgl_lahir_ayah" class="form-control form-control-sm">
                         </div>
                     </div>
                 </div>

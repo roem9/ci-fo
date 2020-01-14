@@ -7,7 +7,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body fo-13">
+      <div class="modal-body fo-14">
           <ul class="list-group">
               <li class="list-group-item active">Daftar KBM</li>
               <div id="list-kbm"></div>

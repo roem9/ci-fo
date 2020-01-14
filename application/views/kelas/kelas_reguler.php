@@ -22,7 +22,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-hover table-sm fo-13 text-dark" id="dataTable" cellspacing="0">
+                <table class="table table-hover table-sm fo-14 text-dark" id="dataTable" cellspacing="0">
                     <thead>
                         <th>No</th>
                         <th>Status</th>
@@ -33,16 +33,6 @@
                         <th>Pengajar</th>
                         <th>Detail</th>
                     </thead>
-                    <tfoot>
-                        <th>No</th>
-                        <th>Status</th>
-                        <th>Program</th>
-                        <th>Ruangan</th>
-                        <th>Hari</th>
-                        <th>Waktu</th>
-                        <th>Pengajar</th>
-                        <th>Detail</th>
-                    </tfoot>
                     <tbody>
                         <?php
                             $no = 0;

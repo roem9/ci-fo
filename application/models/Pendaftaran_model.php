@@ -29,6 +29,7 @@ class Pendaftaran_model extends CI_MODEL{
     public function getIdPeserta(){
 
         $tahun = date('y');
+        // $tahun = "19";
         $tipe = $this->input->post('tipe_peserta');
 
         if ($tipe == 'reguler'){
@@ -39,6 +40,7 @@ class Pendaftaran_model extends CI_MODEL{
             $tipe = 'PL';
         }
 
+        $this->db->select("SUBSTRING(id_peserta, 8, 4) as id_peserta");
         $this->db->from('peserta');
         $this->db->where('SUBSTRING(id_peserta, 5, 2) = ', $tahun);
         $this->db->where('SUBSTRING(id_peserta, 1, 2) = ', $tipe);
@@ -56,6 +58,9 @@ class Pendaftaran_model extends CI_MODEL{
         
         $bulan = date('m');
         $tahun = date('y');
+        // $bulan = "09";
+        // $tahun = "19";
+
         $tipe = $this->input->post('tipe_peserta');
 
         if ($tipe == 'reguler'){
@@ -104,7 +109,8 @@ class Pendaftaran_model extends CI_MODEL{
             "hari" => $this->input->post('hari', true),
             "jam" => $this->input->post('jam', true),
             "tempat" => $this->input->post('tempat', true),
-            "tgl_masuk" => date('Y-m-d')
+            "tgl_masuk" => date("Y-m-d")
+            // "tgl_masuk" => "2019-09-09"
         ];
 
         $this->db->insert('peserta', $data['peserta']);

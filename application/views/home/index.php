@@ -37,27 +37,27 @@
             </div>
         </form>
 
-        <div class="row fo-13">
+        <div class="row fo-14">
             <!-- jk -->
-            <div class="md-col-2 sm-col-4 col-2">
+            <div class="md-col-3 mb-3 sm-col-4 col-3">
                 <ul class="list-group">
                     <li class="list-group-item list-group-item-info d-flex justify-content-between">
                         <span>Gender</span>
                         <span><i class="fa fa-male"></i> <i class="fa fa-female"></i></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
-                        <span><i class="fa fa-male"></i> Ikhwan</span>
+                        <span>Ikhwan</span>
                         <?= $peserta['pria']?>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
-                        <span><i class="fa fa-female"></i> Akhwat</span>
+                        <span>Akhwat</span>
                         <?= $peserta['wanita']?>
                     </li>
                 </ul>
             </div>
             
             <!-- pendidikan -->
-            <div class="md-col-2 sm-col-4 col-2">
+            <div class="md-col-3 mb-3 sm-col-4 col-3">
                 <ul class="list-group">
                     <li class="list-group-item list-group-item-info d-flex justify-content-between">
                         <span>Pendidikan</span>
@@ -73,7 +73,7 @@
             </div>
             
             <!-- pekerjaan -->
-            <div class="md-col-2 sm-col-4 col-2">
+            <div class="md-col-3 mb-3 sm-col-4 col-3">
                 <ul class="list-group">
                     <li class="list-group-item list-group-item-info d-flex justify-content-between">
                         <span>Pekerjaan</span>
@@ -85,11 +85,19 @@
                             <?= $pekerjaan['peserta']?>
                         </li>
                     <?php endforeach;?>
+                    <?php if($pekerjaan_lainnya) : ?>
+                        <a href="#" data-toggle="modal" data-target="#modal_lainnya_pekerjaan" data-id="<?= $month . '|' . $year?>" class="modalPekerjaan">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Lainnya</span>
+                                <?= $pekerjaan_lainnya?>
+                            </li>
+                        </a>
+                    <?php endif;?>
                 </ul>
             </div>
 
             <!-- pendaftar -->
-            <div class="md-col-2 sm-col-4 col-2"> 
+            <div class="md-col-3 mb-3 sm-col-4 col-3"> 
                 <ul class="list-group">
                     <li class="list-group-item list-group-item-info d-flex justify-content-between">
                         <span>Pendaftar</span>
@@ -107,7 +115,7 @@
             </div>
             
             <!-- program -->
-            <div class="md-col-2 sm-col-4 col-2">
+            <div class="md-col-3 mb-3 sm-col-4 col-3">
                 <ul class="list-group">
                     <li class="list-group-item list-group-item-info d-flex justify-content-between">
                         <span>Program</span>
@@ -121,7 +129,30 @@
                     <?php endforeach;?>
                 </ul>
             </div>
-
+            
+            <!-- informasi -->
+            <div class="md-col-3 mb-3 sm-col-4 col-3">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info d-flex justify-content-between">
+                        <span>Informasi</span>
+                        <i class="fa fa-info"></i>
+                    </li>
+                    <?php foreach ($informasi as $informasi) :?>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span><?= $informasi['info']?></span>
+                            <?= $informasi['peserta']?>
+                        </li>
+                    <?php endforeach;?>
+                    <?php if($informasi_lainnya != 0):?>
+                        <a href="#" data-toggle="modal" data-target="#modal_lainnya_informasi" data-id="<?= $month . '|' . $year?>" class="modalInformasi">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Lainnya</span>
+                                <?= $informasi_lainnya?>
+                            </li>
+                        </a>
+                    <?php endif;?>
+                </ul>
+            </div>
 
         </div>
     </div>
@@ -133,4 +164,51 @@
 
 <script>
     $("#home").addClass("active")
+
+    $(".modalPekerjaan").click(function(){
+        const id = $(this).data('id');
+        const data = id.split("|");
+        const bulan = data[0];
+        const tahun = data[1]
+
+        $.ajax({
+            url : "<?=base_url()?>home/pekerjaanlain",
+            method : "POST",
+            data : {bulan : bulan, tahun : tahun},
+            async : true,
+            dataType : 'json',
+            success : function(data){
+                // console.log(data)
+                var html = '';
+                var i;
+                for(i=0; i<data.length; i++){
+                    html += '<li class="list-group-item d-flex justify-content-between"><span>'+data[i].pekerjaan+'</span>' + data[i].peserta + '</li>';
+                }
+                $('#list-pekerjaan').html(html);
+            }
+        })
+    })
+    
+    $(".modalInformasi").click(function(){
+        const id = $(this).data('id');
+        const data = id.split("|");
+        const bulan = data[0];
+        const tahun = data[1]
+
+        $.ajax({
+            url : "<?=base_url()?>home/informasilain",
+            method : "POST",
+            data : {bulan : bulan, tahun : tahun},
+            async : true,
+            dataType : 'json',
+            success : function(data){
+                var html = '';
+                var i;
+                for(i=0; i<data.length; i++){
+                    html += '<li class="list-group-item d-flex justify-content-between"><span>'+data[i].nama_kpq+'</span>' + data[i].peserta + '</li>';
+                }
+                $('#list-informasi').html(html);
+            }
+        })
+    })
 </script>

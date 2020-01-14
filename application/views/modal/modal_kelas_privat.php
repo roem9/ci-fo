@@ -22,7 +22,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="card-body fo-13">
+            <div class="card-body fo-14">
               <ul class="list-group" id="dataKelas">
                 <li class="list-group-item list-group-item-info">Data Akademik</li>
                 <li class="list-group-item">

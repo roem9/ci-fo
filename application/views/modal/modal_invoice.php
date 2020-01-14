@@ -7,7 +7,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body fo-13">
+      <div class="modal-body fo-14">
         <form action="<?=base_url()?>piutang/hapusInvoice" method="POST">
           <ul class="list-group">
               <li class="list-group-item active">List Invoice</li>

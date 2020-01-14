@@ -44,6 +44,17 @@ class Home extends CI_CONTROLLER{
             $data['pekerjaan'][$key] = $pekerjaan;
             $data['pekerjaan'][$key]['peserta'] = COUNT($this->Home_model->pekerjaan($bulan, $tahun, $pekerjaan['pekerjaan']));
         }
+
+        $data['pekerjaan_lainnya'] = COUNT($this->Home_model->getPekerjaanLainnya($bulan, $tahun));
+        
+        $informasi = $this->Home_model->getInformasi($bulan, $tahun);
+        $data['informasi'] = [];
+        foreach ($informasi as $key => $informasi) {
+            $data['informasi'][$key] = $informasi;
+            $data['informasi'][$key]['peserta'] = COUNT($this->Home_model->informasi($bulan, $tahun, $informasi['info']));
+        }
+
+        $data['informasi_lainnya'] = COUNT($this->Home_model->getinformasiLainnya($bulan, $tahun));
         
         $program = $this->Home_model->getProgram($bulan, $tahun);
         $data['program'] = [];
@@ -57,7 +68,19 @@ class Home extends CI_CONTROLLER{
 
         $this->load->view("templates/header", $data);
         $this->load->view("templates/sidebar");
+        $this->load->view("modal/modal_lainnya_pekerjaan");
+        $this->load->view("modal/modal_lainnya_informasi");
         $this->load->view("home/index", $data);
         $this->load->view("templates/footer");
+    }
+
+    public function pekerjaanLain(){
+        $pekerjaan = $this->Home_model->pekerjaanLain();
+        echo json_encode($pekerjaan);
+    }
+    
+    public function informasiLain(){
+        $pekerjaan = $this->Home_model->informasiLain();
+        echo json_encode($pekerjaan);
     }
 }

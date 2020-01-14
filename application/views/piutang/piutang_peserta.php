@@ -59,7 +59,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-hover table-sm fo-13" id="dataTable" cellspacing="0">
+                <table class="table table-hover table-sm fo-14" id="dataTable" cellspacing="0">
                   <thead>
                     <tr>
                       <th>No</th>

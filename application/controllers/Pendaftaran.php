@@ -106,9 +106,9 @@ class Pendaftaran extends CI_CONTROLLER{
         $id = $this->Pendaftaran_model->getIdPeserta();
         $id_peserta = $id['id_peserta'];
         $status = 'wl';
-
+        
         if ($id_peserta != null){
-            $no_urut = substr($id['id_peserta'], 7, 4) + 1;
+            $no_urut = $id_peserta + 1;
         } else {
             $no_urut = 1;
         }

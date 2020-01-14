@@ -75,7 +75,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-sm btn-block" id="edit">Update</button>
                 </form>
-                <ul class="list-group fo-13" id="dataPeserta">
+                <ul class="list-group fo-14" id="dataPeserta">
                   <li class="list-group-item list-group-item-info">List Peserta <span class="badge badge-danger badge-pill" id="totalPeserta"></span></li>
                   <div id="list-peserta"></div>
                   <a href="" class="list-group-item list-group-item-action active" id="pesertaBaru">
@@ -83,7 +83,7 @@
                   </a>
                 </ul>
                 
-                <ul class="list-group fo-13" id="dataJadwal">
+                <ul class="list-group fo-14" id="dataJadwal">
                   <li class="list-group-item list-group-item-info">List Jadwal</li>
                   <div id="list-jadwal"></div>
                 </ul>
